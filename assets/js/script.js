@@ -2,6 +2,23 @@
 let taskList = JSON.parse(localStorage.getItem("tasks"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
+// Get the <span> element that closes the modal
+var span = document.querySelector(".close");
+let model =document.getElementById('myModal')
+$('#TaskForm').on('click',ToggleTaskModel)
+  span.addEventListener('click',function() {
+    model.style.display = "none";
+  })
+
+// will show the add Task Model
+function ToggleTaskModel(){
+    let Model =document.getElementById('myModal')
+    Model.style.display='flex';
+}
+
+
+
+
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
 
