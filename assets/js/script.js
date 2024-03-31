@@ -37,7 +37,7 @@ $('#in-progress-cards ,#done-cards, #todo-cards ').droppable({
         let OBJ=removeObject(itemObjectID,Lastlocation)
         pushItemToStorage(OBJ,destination)
         item.dataset.storage=destination
-        console.log(destination)
+        //console.log(destination)
         
     }
 })
@@ -145,9 +145,10 @@ Box.insertAdjacentHTML('beforeend',`
 `)
 // console.log(Box.querySelector('button') )
 Box.querySelector('button').addEventListener('click',function (eventOBJ){
-    console.log(eventOBJ.target.parentNode)
+   // console.log(eventOBJ.target.parentNode.dataset.storage)
     eventOBJ.target.parentNode.remove()
-    removeObject(OBJ.TaskID,location)
+
+    removeObject(OBJ.TaskID,eventOBJ.target.parentNode.dataset.storage)
 })
 TodoCards.appendChild(Box)
 
@@ -161,18 +162,18 @@ function PickColor(OBJ){
     let currentDate=new Date();
     dueDate=new Date(dueDate)
     let timeRemaining= ((((dueDate.getTime()/1000)/60)/60)/24) -((((currentDate.getTime()/1000)/60)/60)/24)
-    console.log("Due Date",dueDate)
-    console.log("Current Date",currentDate)
-    console.log("Time remaining in days",  timeRemaining  )
+    // console.log("Due Date",dueDate)
+    // console.log("Current Date",currentDate)
+    // console.log("Time remaining in days",  timeRemaining  )
 
     if(timeRemaining>8){
-        console.log('green')
+     //   console.log('green')
         return 'rgb(120, 255, 96)'
     }else if(timeRemaining>3){
-        console.log('yellow')
+      //  console.log('yellow')
        return 'rgb(255, 230, 0)'
     }else{
-        console.log("red")
+      //  console.log("red")
         return ' rgb(253, 60, 60)'
     }
 }
