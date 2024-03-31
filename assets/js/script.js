@@ -6,9 +6,14 @@
 var span = document.querySelector(".close");
 let model = document.getElementById('myModal')
 $('#TaskForm').on('click', ToggleTaskModel)
-span.addEventListener('click', function () {
+// span.addEventListener('click', function () {
+//     model.style.display = "none";
+// })
+
+$('.close ').on('click',function () {
     model.style.display = "none";
 })
+
 
 const form = document.querySelector('form')
 form.addEventListener('submit', createTaskCard)
@@ -32,8 +37,6 @@ $('#in-progress-cards ,#done-cards, #todo-cards ').droppable({
         let Lastlocation=item.dataset.storage;
 
         $(item).detach().css({top:0,left:0}).appendTo(Box)
-        // Box.remove()   
-        // console.log(item)
         let OBJ=removeObject(itemObjectID,Lastlocation)
         pushItemToStorage(OBJ,destination)
         item.dataset.storage=destination
