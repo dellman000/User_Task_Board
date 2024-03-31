@@ -1,6 +1,6 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
-let nextId = JSON.parse(localStorage.getItem("nextId"));
+// let taskList = JSON.parse(localStorage.getItem("tasks"));
+// let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // Get the <span> element that closes the modal
 var span = document.querySelector(".close");
@@ -127,11 +127,12 @@ function renderSingleTask(OBJ,location){
 
 
 let TodoCards=document.getElementById(DivLocationID)
- console.log(TodoCards)
+    let newColor=PickColor(OBJ)
 let Box =document.createElement('div')
 Box.classList='TaskCard';
 Box.dataset.objectid=OBJ.TaskID;
 Box.dataset.storage=location
+Box.style.backgroundColor=newColor
 Box.insertAdjacentHTML('beforeend',`
     
         <h3>${OBJ.TitleRender}</h3>
@@ -142,20 +143,39 @@ Box.insertAdjacentHTML('beforeend',`
       </button>
 
 `)
-console.log(Box.querySelector('button') )
+// console.log(Box.querySelector('button') )
 Box.querySelector('button').addEventListener('click',function (eventOBJ){
     console.log(eventOBJ.target.parentNode)
     eventOBJ.target.parentNode.remove()
     removeObject(OBJ.TaskID,location)
 })
-
-
 TodoCards.appendChild(Box)
+
 $(Box).draggable({
     zIndex:100,
     revert:true})
 }
 
+function PickColor(OBJ){
+    let dueDate=OBJ.DueDateRender
+    let currentDate=new Date();
+    dueDate=new Date(dueDate)
+    let timeRemaining= ((((dueDate.getTime()/1000)/60)/60)/24) -((((currentDate.getTime()/1000)/60)/60)/24)
+    console.log("Due Date",dueDate)
+    console.log("Current Date",currentDate)
+    console.log("Time remaining in days",  timeRemaining  )
+
+    if(timeRemaining>8){
+        console.log('green')
+        return 'rgb(120, 255, 96)'
+    }else if(timeRemaining>3){
+        console.log('yellow')
+       return 'rgb(255, 230, 0)'
+    }else{
+        console.log("red")
+        return ' rgb(253, 60, 60)'
+    }
+}
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
@@ -175,9 +195,9 @@ function renderTaskList() {
         renderSingleTask(element,'Done')
     });
 
-    console.log(ToDoList)
-    console.log(ProgressList)
-    console.log(DoneList)
+    // console.log(ToDoList)
+    // console.log(ProgressList)
+    // console.log(DoneList)
 }
 
 // Todo: create a function to handle adding a new task

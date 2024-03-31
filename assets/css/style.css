@@ -52,7 +52,10 @@ body {
 .TaskCard{
   /* display: flex; */
   /* flex-direction: column; */
-  background-color: rgb(253, 60, 60);
+  /* background-color: rgb(253, 60, 60); */
+  /* background-color: rgb(255, 230, 0); */
+  /* background-color: rgb(120, 255, 96); */
+  background-color: white;
   height: 150px;
   left: 0px;
   z-index: 0;
@@ -60,6 +63,6 @@ body {
 }
 
 .TaskCard h3{
-  background-color: red;
+  background-color: rgb(105, 166, 252);
   color: white;
 }
