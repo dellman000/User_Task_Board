@@ -16,7 +16,7 @@ form.addEventListener('submit', createTaskCard)
 //let MakeTaskBtn=document.getElementById('MakeTaskBtn');
 //MakeTaskBtn.addEventListener('submit',createTaskCard)
 
-renderSingleTask()
+// renderSingleTask()
 
 $('.TaskCard').draggable({
     zIndex:100,
@@ -24,7 +24,7 @@ $('.TaskCard').draggable({
 })
 
 $('#in-progress-cards ,#done-cards, #todo-cards ').droppable({
-    accept:'.TaskCard',
+    // accept:'.TaskCard',
     drop:function(dropEvent,ui){
         let Box=dropEvent.target;
         //  let Box = document.getElementById('in-progress-cards')
@@ -61,30 +61,39 @@ function createTaskCard(task) {
     let Description = document.getElementById('Description')
 
     let newOBJ={ 
-        TitleRender:Title,
-        DueDateRender:DueDate,
-        DescriptionRender:Description
+        TitleRender:Title.value,
+        DueDateRender:DueDate.value,
+        DescriptionRender:Description.value
     }
     renderSingleTask(newOBJ)
         
     
 
-    console.log(Title.value)
-    console.log(DueDate.value)
-    console.log(Description.value)
+    // console.log(Title.value)
+    // console.log(DueDate.value)
+    // console.log(Description.value)
 
 
 }
 
 //will render a single task to the screen
-function renderSingleTask(){
-let Box=document.getElementById('todo-cards')
+function renderSingleTask(OBJ){
+let TodoCards=document.getElementById('todo-cards')
+// console.log(OBJ)
+let Box =document.createElement('div')
+Box.classList='TaskCard'
 Box.insertAdjacentHTML('beforeend',`
-<div class="TaskCard">
-                  <h3>Item 1</h3>
-                </div>
+    
+        <h3>${OBJ.TitleRender}</h3>
+        <div> ${OBJ.DueDateRender} </div>
+        <p> ${OBJ.DescriptionRender}</p>
+    
 
 `)
+TodoCards.appendChild(Box)
+$(Box).draggable({
+    zIndex:100,
+    revert:true})
 }
 
 
