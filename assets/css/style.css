@@ -18,7 +18,7 @@ body {
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 20; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -34,7 +34,7 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #fefefe;
-  
+  z-index: 20;
   margin: 15% auto; /* 15% from the top and centered */
   padding: 20px;
   border: 1px solid #888;
@@ -47,4 +47,18 @@ body {
   float: right;
   font-size: 28px;
   font-weight: bold;
+}
+
+.TaskCard{
+  /* display: flex; */
+  /* flex-direction: column; */
+  background-color: rgb(253, 60, 60);
+  height: 150px;
+  left: 0px;
+  z-index: 0;
+}
+
+.TaskCard h3{
+  background-color: red;
+  color: white;
 }

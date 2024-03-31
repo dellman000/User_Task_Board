@@ -32,14 +32,14 @@
       <!-- Modal content -->
       <div class="modal-content">
         <span class="close">&times;</span>
-        <form action="">
+        <form >
           <h3>Task Title</h3>
-          <input type="text">
+          <input id="Title" type="text" required>
           <h3>Task Due Date</h3>
-          <input type="date">
+          <input id="Due" type="date" required>
           <h3>Task Description </h3>
-          <input type="text">
-          <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
+          <input id="Description" type="text" required>
+          <button id="MakeTaskBtn" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#formModal">Add Task</button>
         </form>
 
         
@@ -56,8 +56,13 @@
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">To Do</h2>
           </div>
-          <div class="card-body bg-light">
-            <div id="todo-cards"></div>
+          <div id="todo-cards" class="card-body bg-light">
+            <div >
+                <!-- <div class="TaskCard">
+                  <h3>Item 1</h3>
+                </div> -->
+
+            </div>
           </div>
         </div>
       </div>
@@ -66,8 +71,8 @@
           <div class="card-header bg-white">
             <h2 class="card-title mb-1">In Progress</h2>
           </div>
-          <div class="card-body bg-light">
-            <div id="in-progress-cards"></div>
+          <div class="card-body bg-light"  id="in-progress-cards">
+           
           </div>
         </div>
         </div>
@@ -76,8 +81,8 @@
             <div class="card-header bg-white">
               <h2 class="card-title mb-1">Done</h2>
             </div>
-            <div class="card-body bg-light">
-              <div id="done-cards"></div>
+            <div id="done-cards"class="card-body bg-light">
+              <div ></div>
           </div>
           </div>
       </div>
